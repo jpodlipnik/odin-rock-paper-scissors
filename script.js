@@ -21,4 +21,37 @@ function getHumanChoice() {
     return choice.toLowerCase();
 }
 
+//Player score variables
 
+let humanScore = 0;
+let computerScore = 0;
+
+//Capitalize text
+function capitalize(text) {
+	return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
+//Single round logic
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice === computerChoice) {
+        console.log("It's a tie!");
+    } else if ((humanChoice === "rock" && computerChoice === "scissors") ||
+(humanChoice === "scissors" && computerChoice === "paper") ||
+(humanChoice === "paper" && computerChoice === "rock")) {
+    console.log(`You win! ${capitalize(humanChoice)} beats ${capitalize(computerChoice)}!`)
+    humanScore++;
+} else if ((humanChoice === "rock" && computerChoice === "paper") ||
+(humanChoice === "scissors" && computerChoice === "rock") ||
+(humanChoice === "paper" && computerChoice === "scissors")) {
+    console.log(`You loose! ${capitalize(computerChoice)} beats ${capitalize(humanChoice)}!`)
+    computerScore++;
+} else {
+    console.log("Invalid choice");
+}
+}
+
+const humanSelection = getHumanChoice()
+const computerSelection = getComputerChoice()
+
+
+playRound(humanSelection, computerSelection)
